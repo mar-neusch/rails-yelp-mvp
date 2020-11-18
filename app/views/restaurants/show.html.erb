@@ -1,10 +1,22 @@
 <h1>Restaurant</h1>
 
-<ul>
-  <li>name: <%= @restaurant.name %></li>
+<div class="container">
+<h4>Description :</h4>
+<ul class=“list-group”>
+ <li>name: <%= @restaurant.name %></li>
   <li>address: <%= @restaurant.address %></li>
   <li>phone_number: <%= @restaurant.phone_number %></li>
   <li>category: <%= @restaurant.category %></li>
 </ul>
+<h4>Reviews :</h4>
+<ul class=“list-group”>
+  <% @restaurant.reviews.each do |review| %>
+      <li class=“list-group-item”> what's up?: <%= review.content %></li>
+      <li class=“list-group-item”> rating on 5: <%= review.rating %></li>
+    <% end %>
+  </ul>
+</div>
+
 
 <%= link_to "Back to all restaurants", restaurants_path %>
+<%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %>
